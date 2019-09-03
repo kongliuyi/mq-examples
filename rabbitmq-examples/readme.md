@@ -59,7 +59,8 @@ P表示为生产者 、C表示为消费者、红色表示队列、X表示扇型�
 
 
 ###四、路由模式
- ![路由模式](../docs/rabbitmq-routingkey.png) 
+
+ ![路由模式](../docs/rabbitmq-routingKey.png) 
 
 P表示为生产者 、C表示为消费者、红色表示队列、X表示直连交换机。
 
