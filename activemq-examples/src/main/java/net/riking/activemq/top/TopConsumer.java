@@ -1,26 +1,18 @@
 package net.riking.activemq.top;
 
-import net.riking.activemq.config.MqConfig;
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
+import net.riking.activemq.config.MQConnectionUtils;
 
 import javax.jms.*;
 
 public class TopConsumer {
 
+	public final  static String TOPIC = "my.topic";
 
 	public static void main(String[] args) throws JMSException {
-		start();
-	}
-
-	static public void start() throws JMSException {
 		System.out.println("消费者启动...");
-		// 创建ActiveMQConnectionFactory 会话工厂
-		ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, MqConfig.BROKERURL);
-		Connection connection = activeMQConnectionFactory.createConnection();
-		connection.start();// 启动JMS 连接
+		Connection connection = MQConnectionUtils.newConnection();// 创建连接
 		Session session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
-		Topic topic = session.createTopic(MqConfig.TOPIC);// 创建一个主题
+		Topic topic = session.createTopic(TOPIC);// 创建一个主题
 		MessageConsumer consumer = session.createConsumer(topic);
 		// consumer.setMessageListener(new MsgListener());
 		while (true) {

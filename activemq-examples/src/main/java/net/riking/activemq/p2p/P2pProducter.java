@@ -1,33 +1,26 @@
 package net.riking.activemq.p2p;
 
 
-import net.riking.activemq.config.MqConfig;
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
+import net.riking.activemq.config.MQConnectionUtils;
 
 import javax.jms.*;
 
 
 public class P2pProducter {
 
-
+	public final  static String QUEUE = "my.queue";
 
 	public static void main(String[] args) throws JMSException {
 		System.out.println("生产者已经启动....");
-		// ConnectionFactory ：连接工厂，JMS 用它创建连接
-		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,
-				ActiveMQConnection.DEFAULT_PASSWORD, MqConfig.BROKERURL);
-		Connection connection =  connectionFactory.createConnection();//创建连接
-		connection.start();//开启连接
-
 		/**  Boolean: 是否开启事务    int：
 		 * 1.Session.AUTO_ACKNOWLEDGE：自动签收
 		 * 2.Session.CLIENT_ACKNOWLEDGE：手动签收
 		 * 3.Session.DUPS_ACKNOWLEDGE：该选择只是会话迟钝的确认消息的提交。如果JMS Provider失败，那么可能会导致一些重复的消息。如果是重复的消息，那么JMS Provider必须把消息头的JMSRedelivered字段设置为true。
 		 */
+		Connection connection = MQConnectionUtils.newConnection();// 创建连接
 		Session session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);// 创建会话工厂
 		// Destination ：消息的目的地;消息发送给谁.
-		Destination destination = session.createQueue(MqConfig.QUEUE);//创建my-queue队列
+		Destination destination = session.createQueue(QUEUE);//创建my-queue队列
 		// MessageProducer：消息生产者
 		MessageProducer producer = session.createProducer(destination);
 		// PERSISTENT：持久保存消息
