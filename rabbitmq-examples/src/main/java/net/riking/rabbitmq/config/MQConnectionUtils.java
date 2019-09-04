@@ -9,11 +9,11 @@ import java.util.concurrent.TimeoutException;
 public class MQConnectionUtils {
 
 
-    private   final  static  String  HOST= "127.0.0.1";
+    private   final  static  String  HOST= "192.168.177.129";
     private   final  static  int     PORT=  5672;
-    private   final  static String  VIRTUALHOST ="/test001_host";
-    private   final  static String   USER_NAME="guest";
-    private   final  static String   PASSWORD="guest";
+    private   final  static String  VIRTUALHOST ="/virtual_host";
+    private   final  static String   USER_NAME="admin";
+    private   final  static String   PASSWORD="admin";
 
 	public static Connection newConnection() throws IOException, TimeoutException {
 		// 1.定义连接工厂

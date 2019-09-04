@@ -11,7 +11,7 @@ public class ConsumerEmailFanout {
 	private static final String EXCHANGE_NAME = "fanout_exchange";
 
 	public static void main(String[] args) throws IOException, TimeoutException {
-		System.out.println("邮件消费者启动");
+		System.out.println("发布订阅模式：邮件消费者启动");
 		// 1.创建新的连接
 		Connection connection = MQConnectionUtils.newConnection();
 		// 2.创建通道

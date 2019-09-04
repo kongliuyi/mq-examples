@@ -8,10 +8,10 @@ import java.util.concurrent.TimeoutException;
 
 public class Customer {
 
-	private static final String QUEUE_NAME = "test_queue";
+	private static final String QUEUE_NAME = "simple_queue";
 
 	public static void main(String[] args) throws IOException, TimeoutException {
-		System.out.println("002");
+		System.out.println("简单队列：消费者开启");
 		// 1.获取连接
 		Connection newConnection = MQConnectionUtils.newConnection();
 		// 2.获取通道

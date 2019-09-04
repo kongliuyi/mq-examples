@@ -11,7 +11,7 @@ public class ConsumerSMSDirect {
 	private static final String EXCHANGE_NAME = "direct_exchange";
 
 	public static void main(String[] args) throws IOException, TimeoutException {
-		System.out.println("短信消费者启动");
+		System.out.println("路由模式：短信消费者启动");
 		// 1.创建新的连接
 		Connection connection = MQConnectionUtils.newConnection();
 		// 2.创建通道
@@ -25,7 +25,7 @@ public class ConsumerSMSDirect {
 			public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
 					throws IOException {
 				String msg = new String(body, "UTF-8");
-				System.out.println("消费者获取生产者消息:" + msg);
+				System.out.println("路由模式：短信消费者获取生产者消息:" + msg);
 			}
 		};
 		// 5.消费者监听队列消息

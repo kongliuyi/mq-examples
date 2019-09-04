@@ -11,7 +11,7 @@ public class ConsumerSMSDirect {
 	private static final String EXCHANGE_NAME = "topic_exchange";
 
 	public static void main(String[] args) throws IOException, TimeoutException {
-		System.out.println("短信消费者启动");
+		System.out.println("通配符模式：短信消费者启动");
 		// 1.创建新的连接
 		Connection connection = MQConnectionUtils.newConnection();
 		// 2.创建通道
