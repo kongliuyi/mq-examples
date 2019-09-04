@@ -39,7 +39,8 @@ Kafka是Apache下的一个子项目，是一个高性能跨语言分布式Publis
 本项目中只演示常见的四种
  ActiveMQ、RocketMQ、RabbitMQ以及Kafka,其中RocketMQ以后有时间在写（我认为复杂繁琐）
  
-[三种常见MQ比较](./docs/mq-compare.png) 
+ 三种常见MQ比较:
+![三种常见MQ比较](./docs/mq-compare.png) 
 
  
 
