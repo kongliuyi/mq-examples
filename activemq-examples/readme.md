@@ -3,6 +3,7 @@
 #### 一、点对点（P2P）模式
 ##### 1.	P2P模式图 
  ![P2P模式图](../docs/activemq-p2p.png) 
+
 黄色Client1表示发送者(Sender)、黄色Client2表示接收者(Receiver)、蓝色表示消息队列（Queue）
 
 功能： 每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，直到他们被消费或超时。
@@ -18,6 +19,7 @@
 #### 二、发布与订阅（Pub/Sub）模式
 ##### 1.	P2P模式图 
 ![Pub/Sub模式图](../docs/activemq-topic.png) 
+
 黄色Client1表示发布者（Publisher）、黄色Client2和Client2表示订阅者（Subscriber）、棕色表示主题消息队列（Queue）
 
 功能：客户端将消息发送到主题。多个发布者将消息发送到Topic,系统将这些消息传递给多个订阅者
