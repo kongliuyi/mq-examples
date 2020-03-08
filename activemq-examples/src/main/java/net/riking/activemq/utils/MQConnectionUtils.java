@@ -1,4 +1,4 @@
-package net.riking.activemq.config;
+package net.riking.activemq.utils;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -15,8 +15,10 @@ public class MQConnectionUtils {
 	public static Connection newConnection() throws JMSException {
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER,
 				ActiveMQConnection.DEFAULT_PASSWORD, BROKERURL);
-		Connection connection = connectionFactory.createConnection();// 创建连接
-		connection.start();//开启连接
+		// 创建连接
+		Connection connection = connectionFactory.createConnection();
+		// 开启连接
+		connection.start();
 		return connection;
 	}
 

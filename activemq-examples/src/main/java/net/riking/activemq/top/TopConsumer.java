@@ -1,6 +1,6 @@
 package net.riking.activemq.top;
 
-import net.riking.activemq.config.MQConnectionUtils;
+import net.riking.activemq.utils.MQConnectionUtils;
 
 import javax.jms.*;
 

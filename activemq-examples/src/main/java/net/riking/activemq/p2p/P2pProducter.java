@@ -1,7 +1,7 @@
 package net.riking.activemq.p2p;
 
 
-import net.riking.activemq.config.MQConnectionUtils;
+import net.riking.activemq.utils.MQConnectionUtils;
 
 import javax.jms.*;
 
@@ -17,17 +17,22 @@ public class P2pProducter {
 		 * 2.Session.CLIENT_ACKNOWLEDGE：手动签收
 		 * 3.Session.DUPS_ACKNOWLEDGE：该选择只是会话迟钝的确认消息的提交。如果JMS Provider失败，那么可能会导致一些重复的消息。如果是重复的消息，那么JMS Provider必须把消息头的JMSRedelivered字段设置为true。
 		 */
-		Connection connection = MQConnectionUtils.newConnection();// 创建连接
-		Session session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);// 创建会话工厂
+		Connection connection = MQConnectionUtils.newConnection();
+		// 创建会话工厂
+		Session session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
 		// Destination ：消息的目的地;消息发送给谁.
-		Destination destination = session.createQueue(QUEUE);//创建my-queue队列
+		// 创建 my.queue 队列
+		Destination destination = session.createQueue(QUEUE);
 		// MessageProducer：消息生产者
 		MessageProducer producer = session.createProducer(destination);
+		// 设置是否持久化
 		// PERSISTENT：持久保存消息
 		// NON_PERSISTENT：不持久保存消息。
-		producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);		// 设置是否持久化
-        sendMsg(session, producer);	// 发送消息
-        session.commit();//提交事务
+		producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+		// 发送消息
+        sendMsg(session, producer);
+		// 提交事务
+        session.commit();
 		System.out.println("发送成功!");
 		connection.close();
 	}
