@@ -14,7 +14,7 @@
         <dependency>
             <groupId>com.rabbitmq</groupId>
             <artifactId>amqp-client</artifactId>
-            <version>4.8.0</version>
+            <version>5.18.0</version>
         </dependency>
     </dependencies>
    <!--代码示例： https://www.cnblogs.com/Alva-mu/p/9535396.html-->
